@@ -1,0 +1,120 @@
+
+body {
+    background-color: #f1f1f1;
+    font-family: poppinsregular;
+    display: flex;
+    margin: 0;
+    width: 100vw;
+    height: 100vw;
+}
+
+nav{
+    width: 150px;
+    display: flex;
+    margin: 0;
+    background-color: #3fb8a7;
+    flex-direction: column;
+    line-height: 20px;
+    height: 100vw;
+    
+}
+nav{
+    position: fixed;
+    top: 0;
+    width: 150px;
+    z-index: 100;
+}
+
+h1{
+    color: #e97077;
+    font-family: poppinsmedium;
+    margin: 0 25px 0 25px;
+}
+
+
+nav img{
+    width: 90px;
+    display: block;
+    margin: 15px;
+    padding: 15px;
+}
+
+li{
+    font-family: poppinsmedium;
+    display: block;
+    margin-top: 45px;
+}
+
+a{
+    color: #000;
+    margin: 15px 0 0 0;
+    text-decoration: none;
+    
+}
+
+a:hover{
+    color:#fff;
+    transition: 0.3s all;
+   
+}
+
+
+
+.article {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #415361;
+    min-height: 80px;
+    min-width: 400px;
+    max-height: 150px;
+    width: 100vw;
+    
+  
+}
+
+.header h1{
+    font-family:poppinsregular;
+    color:#3fb8a7;
+    margin: 40px 0 40px 0;
+}
+
+
+img{
+    width: 90px;
+    display: block;
+    margin: 15px;
+    padding: 10px;
+}
+
+button {
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3fb8a7;
+    color: white;
+    border: none;
+}
+button:hover{
+    padding: 12px;
+
+}
+button:active{
+    padding: 8px;
+}
+.dados_pets{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 90%px;
+    background-color: #8ad4ca;
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 60px;
+    border-radius: 8px;
+    align-items: center;
+  }

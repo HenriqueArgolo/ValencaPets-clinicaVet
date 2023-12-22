@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2>Ficha de Atendimento para {{ pet[1] }}</h2>
+
+<!-- Exibir informações do pet -->
+
+<h3>Adicionar Novo Atendimento</h3>
+<form action="{{ url_for('ficha_atendimento', pet_id=pet[0]) }}" method="post">
+    <label for="data_atendimento">Data do Atendimento:</label>
+    <input type="date" name="data_atendimento" required><br>
+
+    <label for="observacao">Observação:</label>
+    <textarea name="observacao"></textarea><br>
+
+    <label for="procedimento_id">Procedimento:</label>
+    <select name="procedimento_id">
+        {% for procedimento in servicos %}
+        <option value="{{ procedimento[0] }}">{{ procedimento[2] }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="produto_id">Produto:</label>
+    <select name="produto_id">
+        {% for produto in produtos %}
+        <option value="{{ produto[0] }}">{{ produto[2] }}</option>
+        {% endfor %}
+    </select><br>
+
+    <input type="submit" value="Adicionar Atendimento">
+</form>
+
+<h3>Histórico de Atendimentos</h3>
+<ul>
+    {% for atendimento in atendimentos %}
+    <li>{{ atendimento.data_atendimento }} - Procedimento: {% if atendimento.nome %}{{ atendimento.nome }}{% else %}Nenhum{% endif %}, Produto: {% if atendimento.nome %}{{ atendimento.nome }}{% else %}Nenhum{% endif %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Patas Felizes</title>
+    <link rel="stylesheet" href="/static/base.css">
+    <link rel="stylesheet" href="/static/fonts.css">
+    <link rel="stylesheet" href="/static/media.css">
+    <link rel="stylesheet" href="/static/Formulario.css">
+</head>
+
+<body>
+
+    <nav>
+        <div id="menu">
+
+            <img src="/static/imagens/logo.png" alt="logo">
+
+            <h1 class="navLogo">Valença Pets</h1>
+
+            <ul>
+                <a href="http://localhost:5000/home"><li>Home</li></a>
+                <a href="http://localhost:5000/cadastro_servicos"><li>Cadastrar serviços</li></a>
+                <a href="http://localhost:5000/cadastro_cliente_form"><li>Cadastrar Cliente</li></a>
+                <a href="http://localhost:5000/cadastro_pet_form"><li>Cadastrar Pet</li></a>
+                <a href="http://localhost:5000/logout"><li>Sair</li></a>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="article">
+
+        <div class="header">
+
+            <img src="/static/imagens/dog1.png" alt="dog">
+            <h1 class="headerTitle">Valença Pets</h1>
+
+        </div>
+        <h2>Buscar Cliente</h2>
+
+        <form action="http://localhost:5000/buscarCliente" method="post" id="buscaInputForm">
+            <label for="termoBusca">Buscar por CPF:</label>
+            <input type="text" id="termoBusca" name="termoBusca" required>
+            <button type="submit">Buscar</button>
+        </form>
+
+        <div id="resultadoBusca">
+            {% if dados_cliente %}
+                <h3>Informações do Cliente Encontrado</h3>
+                <p><strong>Nome:</strong> {{ dados_cliente['nome'] }}</p>
+                <p><strong>CPF:</strong> {{ dados_cliente['cpf'] }}</p>
+                <p><strong>Email:</strong> {{ dados_cliente['email'] }}</p>
+                <p><strong>Telefone:</strong> {{ dados_cliente['telefone'] }}</p>
+
+            {% if dados_pet %}
+                {% for pet in dados_pet %}
+                <div class="dados_pets"> 
+                    
+                    <h3>Pet: {{ loop.index }}</h3>    
+                    <p><strong>ID:</strong> {{ pet[0] }}</p>               
+                    <p><strong>Nome:</strong> {{ pet[1] }}</p>
+                    <p><strong>Especie:</strong> {{ pet[2] }}</p>
+                    <p><strong>Raça:</strong> {{ pet[3] }}</p>
+                    <p><strong>Cor:</strong> {{ pet[4] }}</p>
+                    <p><strong>Idade:</strong> {{ pet[5] }}</p>
+                    <button id="ficha_historico" style="background-color: rgb(92, 89, 89); width: 60%;"  onclick="location.href='{{ url_for('ficha_historico', pet_id=pet[0]) }}'">Ficha de atendimento</button>
+                    <button id="botaoEditarPet" onclick="toggleEditarPet()" style="background-color: rgb(92, 89, 89); width: 60%;">Editar Pet</button>
+               
+               
+
+                    <form action="{{ url_for('editar_pet', pet_id=pet[0]) }}" method="post" id="editarPetForm" style="display: none;">
+                        <label for="nomePet">Nome do Pet:</label>
+                        <input type="text" id="nomePet" name="nomePet" value="{{ pet[1] }}" style="width: 380px; background-color: white;" required>
+                        
+                        <label for="especiePet">Espécie:</label>
+                        <input type="text" id="especiePet" name="especiePet" value="{{ pet[2] }}" style="width: 380px; background-color: white;" required>
+                        
+                        <label for="racaPet">Raça:</label>
+                        <input type="text" id="racaPet" name="racaPet" value="{{ pet[3] }}" style="width: 380px; background-color: white;" required>
+                        
+                        <label for="corPet">Cor:</label>
+                        <input type="text" id="corPet" name="corPet" value="{{ pet[4] }}" style="width: 380px; background-color: white;" required>
+                        
+                        <label for="idadePet">Idade:</label>
+                        <input type="text" id="idadePet" name="idadePet" value="{{ pet[5] }}" style="width: 380px; background-color: white;" required>
+                        
+                        <button type="submit" style="width: 400px; text-align: center; line-height: 40px;">Salvar Alterações</button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% endif %}
+                <button id="botaoEditarCliente" onclick="toggleEditarCliente()" style="border-top: 30px;">Editar Cliente</button>
+                <button id="botaoExcluirCliente" onclick="toggleExcluirCliente()" style="background-color: rgb(175, 72, 72);">Excluir Cliente</button>
+
+                <form action="http://localhost:5000/editarCliente" method="post" id="editarClienteForm" style="display: none;">
+                    <input type="text" name="cpf" value="{{ dados_cliente['cpf'] }}" style="width: 380px; background-color: white;" required>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" value="{{ dados_cliente['nome'] }}" style="width: 380px; background-color: white;" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ dados_cliente['email'] }}" style="width: 380px; background-color: white;" required>
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" value="{{ dados_cliente['telefone'] }}" style="width: 380px; background-color: white;" required>
+                    <button type="submit" style="width: 400px; text-align: center; line-height: 40px;">Salvar</button>
+                </form>
+
+                <form action="http://localhost:5000/excluirCliente" method="post" id="excluirClienteForm" style="display: none;">
+                    <label for="nome">Digite o cpf do cliente: </label>
+                    <input type="text" name="cpf" value="{{ dados_cliente['cpf'] }}" style="width: 380px; background-color: white;" required>
+                    <button type="submit" style="width: 400px; text-align: center; line-height: 40px;">Confirmar Exclusão</button>
+                </form>
+
+               
+
+                <script>
+                    function toggleEditarCliente() {
+                        var editarClienteForm = document.getElementById('editarClienteForm');
+                        editarClienteForm.style.display = (editarClienteForm.style.display === 'none') ? 'block' : 'none';
+                    }
+
+                    function toggleExcluirCliente() {
+                        var excluirClienteForm = document.getElementById('excluirClienteForm');
+                        excluirClienteForm.style.display = (excluirClienteForm.style.display === 'none') ? 'block' : 'none';
+                    }
+                    function toggleEditarPet() {
+                        var editarPetForm = document.getElementById('editarPetForm');
+                        editarPetForm.style.display = (editarPetForm.style.display === 'none') ? 'block' : 'none';
+                    }
+                </script>
+            {% else %}
+                <p>{{ "Não encontrado" }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+</body>
+
+</html>

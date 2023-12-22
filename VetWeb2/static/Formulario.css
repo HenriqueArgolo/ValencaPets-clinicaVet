@@ -1,0 +1,119 @@
+@import url('/static/fonts.css');
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+
+
+form [type="submit"]{
+    display: flex;
+    justify-content: center;
+
+    height: 50px;
+    background-color: #3fb8a7;
+    color: #fff;
+    font-weight: regular;
+  
+}
+
+form [type="submit"]:hover{
+    cursor: pointer;
+}
+
+form [type="reset"]{
+    height: 30px;
+    width: 30%;
+    background-color: #3fb8a7;
+    color: #fff;
+    font-weight: regular;
+}
+
+form [type="reset"]:hover{
+    cursor: pointer;
+}
+
+textarea{
+   text-align: center;
+    background-color: #DCDCDC;
+    font-family: poppinsregular;
+    margin-top: 20px;
+    height: 25px;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 15px;
+}
+
+input{
+    background-color:#DCDCDC;
+    margin-top: 5px;
+    height: 35px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    width: 30vw;
+}
+input:hover{
+    height: 38px;
+    width: 31vw;
+}
+
+
+select {
+   display: flex;
+   
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    color: #333;
+    width: 200px;
+    -webkit-appearance: none;
+    align-items: center;
+  }
+  
+  select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    pointer-events: none;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #6b6b6b;
+  }
+  .article{
+    display: flex;
+    align-items: center;
+  }
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+}
+.a-login{
+    color: blue;
+}
+
+#resultadoBusca{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    background-color: #DCDCDC;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 2px solid #8ad4ca;
+}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<form action="http://localhost:5000/salvar_cliente" method="post">
+    <label for="nomeCompleto">Nome Completo:</label><br>
+    <input type="text" id="nomeCompleto" name="nomeCompleto" required><br><br>
+
+    <label for="cpf">CPF:</label><br>
+    <input type="text" id="cpf" name="cpf" required><br><br>
+
+    <label for="telefone">Telefone:</label><br>
+    <input type="tel" id="telefone" name="telefone" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <input type="submit" value="Salvar">
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<form action="http://localhost:5000/cadastro_pet" method="post">
+
+    <label for="cpfDoDono">Cpf do dono:</label>
+    <input type="text" id="cpfDono" name="cpfDono" required><br><br>
+
+    <h3>Dados do Pet:</h3>
+
+    <label for="nomePet">Nome do Pet:</label>
+    <input type="text" id="nomePet" name="nomePet" required><br><br>
+
+    <label for="especiePet">Espécie do Pet:</label>
+    <input type="text" id="especiePet" name="especiePet" required><br><br>
+
+    <label for="racaPet">Raça do Pet:</label>
+    <input type="text" id="racaPet" name="racaPet" required><br><br>
+
+    <label for="corPet">Cor</label>
+    <input type="text" id="corPet" name="corPet"><br><br>
+
+    <label for="idadePet">Idade do Pet:</label>
+    <input type="text" id="idadePet" name="idadePet"><br><br>
+
+
+    <input type="submit" value="Salvar">
+</form>
+{% endblock %}

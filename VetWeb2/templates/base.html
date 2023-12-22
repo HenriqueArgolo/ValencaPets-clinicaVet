@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Patas Felizes</title>
+    <link rel="stylesheet" href="/static/base.css">
+    <link rel="stylesheet" href="/static/fonts.css">
+    <link rel="stylesheet" href="/static/media.css">
+    <link rel="stylesheet" href="/static/Formulario.css">
+</head>
+
+<body>
+
+    <nav>
+        <div id="menu">
+
+            <h1 class="navLogo">Valença Pets</h1>
+
+            <ul>
+                <a href="http://localhost:5000/home"><li>Home</li></a>
+                <a href="http://localhost:5000/cadastro_servicos"><li>Cadastrar serviços</li></a>
+                <a href="http://localhost:5000/cadastro_cliente_form"><li>Cadastrar Cliente</li></a>
+                <a href="http://localhost:5000/cadastro_pet_form"><li>Cadastrar Pet</li></a>
+                <a href="{{ url_for('logout') }}"><li>Sair</li></a>
+         
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="article">
+
+        <div class="header">
+            <h1 class="headerTitle">Valença Pets</h1>
+
+        </div>
+
+            {% block body %}
+            {% endblock %}
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>

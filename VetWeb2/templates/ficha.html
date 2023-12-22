@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Histórico de Atendimentos para Pet ID: {{ pet_id }}</h2>
+        <ul>
+            {% for atendimento in atendimentos %}
+            <li>{{ atendimento[2] }} - Procedimento: {{ atendimento[4] }}, Produto: {{ atendimento[5] }}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+
+{% endblock %}

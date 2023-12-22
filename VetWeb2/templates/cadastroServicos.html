@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cadastro de Serviços</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Patas Felizes</title>
+    <link rel="stylesheet" href="/static/base.css">
+    <link rel="stylesheet" href="/static/fonts.css">
+    <link rel="stylesheet" href="/static/media.css">
+    <link rel="stylesheet" href="/static/Formulario.css">
+</head>
+
+
+   
+</head>
+
+<body>
+    <nav>
+        <div id="menu">
+
+            <img src="/static/imagens/logo.png" alt="logo">
+            <h1 class="navLogo">Valença Pets</h1>
+
+            <ul>
+                <a href="http://localhost:5000/home"><li>Home</li></a>
+                <a href="http://localhost:5000/cadastro_servicos"><li>Cadastrar serviços</li></a>
+                <a href="http://localhost:5000/cadastro_cliente_form"><li>Cadastrar Cliente</li></a>
+                <a href="http://localhost:5000/cadastro_pet_form"><li>Cadastrar Pet</li></a>
+            </ul>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="article">
+
+        <div class="header">
+
+
+            <img src="/static/imagens/dog1.png" alt="dog">
+            <h1 class="headerTitle">Cadastro de Serviços e produtos</h1>
+
+        </div>
+
+        <label for="tipoCadastro">Selecione o tipo de cadastro:</label>
+        <select id="tipoCadastro" onchange="showForm(this.value)">
+            <option value="">Selecione</option>
+            <option value="produto">Cadastro de Produtos</option>
+            <option value="procedimento">Cadastro de Procedimentos</option>
+        </select>
+
+        <!-- Formulário de Cadastro de Produtos -->
+        <form id="produtoForm" action="http://localhost:5000/cadastrar_produto" method="post" style="display: none;">
+            <h3>Cadastro de Produto</h3>
+            <label for="categoriaProduto">Categoria do Produto:</label>
+            <select id="categoriaProduto" name="product">
+                <option value="aliemntos">Alimentos</option>
+                <option value="brinquedos">Brinquedos</option>
+                <option value="acessorios">Acessórios</option>
+            </select><br><br>
+            <label for="nomeProduto">Nome do Produto:</label>
+            <input type="text" name="nomeProduto"><br><br>
+            <label for="precoProduto">Preço do Produto:</label>
+            <input type="number" name="precoProduto" step="0.01" min="0" placeholder="0.00" required><br><br>
+            <label for="quantidadeEstoque">Quantidade em Estoque:</label>
+            <input type="number" name="quantidadeEstoque"><br><br>
+            <input type="submit" value="Salvar">
+        </form>
+
+        <!-- Formulário de Cadastro de Procedimentos -->
+        <form id="procedimentoForm" action="http://localhost:5000/cadastrar_procedimento" method="post" style="display: none;">
+            <h3>Cadastro de Procedimento</h3>
+            <label for="categoriaProcedimento">Categoria do Procedimento:</label>
+            <select id="categoriaProcedimento" name="service">
+                <option value="consulta">Consulta</option>
+                <option value="vacinacao">Vacinação</option>
+                <option value="cirurgia">Cirurgia</option>
+            </select><br><br>
+            <label for="nomeProcedimento">Nome do Procedimento:</label>
+            <input type="text" name="nomeProcedimento"><br><br>
+            <label for="valorProcedimento">Valor do Procedimento:</label>
+            <input type="number" name="valorProcedimento"step="0.01" min="0" placeholder="0.00" required><br><br>
+            <input type="submit" value="Salvar">
+        </form>
+
+        <script>
+            function showForm(selectedValue) {
+                if (selectedValue === "produto") {
+                    document.getElementById("produtoForm").style.display = "flex";
+                    document.getElementById("procedimentoForm").style.display = "none";
+                } else if (selectedValue === "procedimento") {
+                    document.getElementById("procedimentoForm").style.display = "flex";
+                    document.getElementById("produtoForm").style.display = "none";
+                } else {
+                    document.getElementById("produtoForm").style.display = "none";
+                    document.getElementById("procedimentoForm").style.display = "none";
+                }
+            }
+        </script>
+</body>
+
+</html>
